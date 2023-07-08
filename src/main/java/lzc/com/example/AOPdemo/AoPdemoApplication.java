@@ -1,6 +1,7 @@
 package lzc.com.example.AOPdemo;
 
 import lzc.com.example.AOPdemo.dao.AccountDAO;
+import lzc.com.example.AOPdemo.dao.MembershipDAO;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,14 +15,17 @@ public class AoPdemoApplication {
 		SpringApplication.run(AoPdemoApplication.class, args);
 	}
 	@Bean
-	public CommandLineRunner commandLineRunner(AccountDAO accountDAO) {
+	public CommandLineRunner commandLineRunner(AccountDAO accountDAO, MembershipDAO membershipDAO) {
 		return runner -> {
-			demoTheBeforeAdvice(accountDAO);
+			demoTheBeforeAdvice(accountDAO, membershipDAO );
 		};
 	}
 
-	private void demoTheBeforeAdvice(AccountDAO accountDAO) {
+	private void demoTheBeforeAdvice(AccountDAO accountDAO, MembershipDAO membershipDAO) {
 		accountDAO.addAccount();
+
+		membershipDAO.addAccount();
+
 	}
 
 }
