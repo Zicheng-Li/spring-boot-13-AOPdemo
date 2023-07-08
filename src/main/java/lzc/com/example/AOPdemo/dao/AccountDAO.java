@@ -1,5 +1,7 @@
 package lzc.com.example.AOPdemo.dao;
 
+import lzc.com.example.AOPdemo.Account;
+
 public interface AccountDAO {
-    void addAccount();
+    void addAccount(Account theAccount);
 }

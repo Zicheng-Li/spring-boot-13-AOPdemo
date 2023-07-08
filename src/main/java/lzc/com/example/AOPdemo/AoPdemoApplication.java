@@ -22,10 +22,9 @@ public class AoPdemoApplication {
 	}
 
 	private void demoTheBeforeAdvice(AccountDAO accountDAO, MembershipDAO membershipDAO) {
-		accountDAO.addAccount();
-
+		Account myAccount = new Account();
+		accountDAO.addAccount(myAccount);
 		membershipDAO.addSillyMember();
-
 	}
 
 }
