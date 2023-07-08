@@ -2,31 +2,16 @@ package lzc.com.example.AOPdemo.aspect;
 
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
+@Order(2)
 public class MyDemoLoggingAspect {
-    @Pointcut("execution(* lzc.com.example.AOPdemo.dao.*.*(..))")
-    private void forDaoPackage() {}
-    // create pointcut for getter methods
-    @Pointcut("execution(* lzc.com.example.AOPdemo.dao.*.get*(..))")
-    private void getter() {}
-    // create pointcut for setter methods
-    @Pointcut("execution(* lzc.com.example.AOPdemo.dao.*.set*(..))")
-    private void setter() {}
-    // create pointcut: include package ... exclude getter/setter
-    @Pointcut("forDaoPackage() && !(getter() || setter())")
-    private void forDaoPackageNoGetterSetter() {}
-
-
-
-    @Before("forDaoPackageNoGetterSetter()")
+    @Before("lzc.com.example.AOPdemo.aspect.AopExpression.forDaoPackageNoGetterSetter()")
     public void beforeAddAccountAdvice() {
         System.out.println("\n=====>>> Executing @Before advice on method");
 }
-
-
 
 }
