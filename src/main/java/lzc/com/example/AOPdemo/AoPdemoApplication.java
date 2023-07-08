@@ -26,6 +26,12 @@ public class AoPdemoApplication {
 
 		accountDAO.addAccount(myAccount, true);
 		membershipDAO.addSillyMember();
+		// call the AccountDAO getter/setter methods
+		accountDAO.setName("john");
+		accountDAO.setServiceCode("silver");
+
+        String name = accountDAO.getName();
+        String code = accountDAO.getServiceCode();
 	}
 
 }
